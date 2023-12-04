@@ -3,21 +3,18 @@
   <property name="src.dir" location="src"/>
   <property name="build.dir" location="build"/>
   <property name="classes.dir" location="${build.dir}/classes"/>
-  <property name="main.class" value="test"/>
+  <property name="main.class" value="test"/> <!-- 默认运行的主类 -->
 
   <target name="init">
-    <!-- Create build directory if not exists -->
     <mkdir dir="${build.dir}"/>
     <mkdir dir="${classes.dir}"/>
   </target>
 
   <target name="compile" depends="init">
-    <!-- Compile Java code -->
     <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
   </target>
 
   <target name="run" depends="compile">
-    <!-- Run the Java program -->
     <java classname="${main.class}" classpath="${classes.dir}">
       <classpath>
         <pathelement path="${classes.dir}"/>
