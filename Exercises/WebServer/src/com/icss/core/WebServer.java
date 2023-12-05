@@ -1,9 +1,7 @@
 package com.icss.core;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.*;
@@ -51,7 +49,7 @@ public class WebServer {
         public void run() {
             try {
                 InputStream inputStream=socket.getInputStream();
-               int d=0;
+               int d;
                while ((d=inputStream.read())!=-1){
                    System.out.print((char)d);
                }
