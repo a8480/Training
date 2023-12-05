@@ -50,9 +50,18 @@ public class WebServer {
             try {
                 InputStream inputStream=socket.getInputStream();
                int d;
+               char a=0,b;
+               StringBuffer stringBuffer=new StringBuffer();
                while ((d=inputStream.read())!=-1){
                    System.out.print((char)d);
+                   b=(char)d;
+                   if (a=='\r'&&b=='\n'){
+                       break;
+                   }
+                   stringBuffer.append(b);
+                   a=b;
                }
+                System.out.println("请求行："+stringBuffer.toString().trim());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
