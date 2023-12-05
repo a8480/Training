@@ -2,6 +2,7 @@ package com.icss.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -49,9 +50,11 @@ public class WebServer {
         @Override
         public void run() {
             try {
-                BufferedReader reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                System.out.println("读取客户端请求...");
-
+                InputStream inputStream=socket.getInputStream();
+               int d=0;
+               while ((d=inputStream.read())!=-1){
+                   System.out.print((char)d);
+               }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
