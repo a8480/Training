@@ -1,6 +1,7 @@
 package com.icss.core;
 
 import com.icss.http.HttpRequest;
+import com.icss.http.HttpResponse;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -52,12 +53,8 @@ public class WebServer {
                 System.out.println(httpRequest.getProtocol());
                 //获取一个输出流，可以用于向客户端发送数据。
                 OutputStream outputStream = socket.getOutputStream();
-                outputStream.write("HTTP/1.1 200 OK\r\n".getBytes());
-                outputStream.write("Content-Type:text/html;\r\n".getBytes());
-                File file=new File("Exercises/WebServer/webapps"+httpRequest.getUrl());
-                outputStream.write(("Content-Length:"+file.length()+"\r\n").getBytes());
-                //写入空行，表示响应头结束。
-                outputStream.write("\r\n".getBytes());
+                //创建对象
+                HttpResponse httpResponse=new HttpResponse(outputStream);
                 //写入响应体
                 if (file.exists()){
                     byte[] bytes=new byte[(int) file.length()];
