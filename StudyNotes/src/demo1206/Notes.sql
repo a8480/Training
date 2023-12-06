@@ -61,3 +61,18 @@ select day(now()) from dual;
 select hour(now()) from dual;
 select minute(now()) from dual;
 select second(now()) from dual;
+### 转换函数
+#### 数值转换为字符串
+#### 字符串转换为数值，转换失败返回0
+select cast(123 as char) from dual;
+select '123'+1 from dual; # 124
+select  '123a'+1 from dual; # 124
+select 'a123'+1 from dual; # 1
+select '1a23'+1 from dual; # 2
+### 日期转换为字符串
+### 字符串转换为日期
+select cast(now() as char) from dual;
+select cast('2019-01-01' as date) from dual;
+select str_to_date('2019-01-01','%Y-%m-%d') from dual;
+#### %Y 代表年份，%m(%c )代表月份，%d 代表天数
+select  str_to_date('2019年-01-01','%Y年-%m-%d') from dual;
