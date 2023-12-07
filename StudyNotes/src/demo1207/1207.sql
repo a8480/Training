@@ -1,0 +1,38 @@
+# 外连接 案例1
+select first_name,last_name,department_name,salary
+from employees left outer join departments
+on employees.department_id=departments.department_id;
+
+# 2没有员工的部门信息
+select  departments.department_id,employee_id
+from departments left outer join employees
+on employees.department_id=departments.department_id
+where employee_id is null;
+
+# 3. 显示没有部门的城市
+select  city,department_name
+from locations left outer join departments
+on locations.location_id=departments.location_id
+where department_id is null;
+
+# 查询 job_id 和 'Chen' 相同,并且 salary <'K_ing' 的工资的员工信息
+select first_name,last_name,salary,job_id
+from employees
+where job_id=(select job_id from employees where last_name='Chen')
+and  salary <min((select salary from employees where last_name='K_ing'));
+
+# 练习2
+select last_name,salary
+from employees
+where salary=(select  min(salary) from employees);
+
+#练习3
+select last_name,salary
+from employees
+where salary>(select avg(salary) from employees where department_id=20);
+
+# 练习4
+select department_id,min(salary)
+from employees
+group by department_id
+having min(salary)>(select  min(salary) from employees where department_id=50);

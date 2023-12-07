@@ -54,3 +54,5 @@ select department_name,city
 from departments,locations
 where department_id
 
+
+
