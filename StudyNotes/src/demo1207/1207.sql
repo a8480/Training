@@ -36,3 +36,15 @@ select department_id,min(salary)
 from employees
 group by department_id
 having min(salary)>(select  min(salary) from employees where department_id=50);
+# 子查询
+#查询 30 高
+select  last_name,salary
+from employees
+where salary >any (select  distinct  salary from employees where department_id=30);
+# 查询每个部门的人数
+
+
+select department_id,count(*)
+from employees right join  departments on departments.department_id=employees.department_id
+group by  departments.department_id
+
