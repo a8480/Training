@@ -118,3 +118,14 @@ group by department_id;
 select last_name,department_name
 from employees ,departments
 where employees.department_id=departments.department_id
+
+##limit:限制查询结果的数量,limit m,n 从第m+1条开始，取n条
+select * from employees limit 5,5;
+##union:合并查询结果，去重
+select last_name from employees
+union
+select last_name from employees;
+##union all:合并查询结果，不去重
+select last_name from employees
+union all
+select last_name from employees;
