@@ -76,3 +76,45 @@ select cast('2019-01-01' as date) from dual;
 select str_to_date('2019-01-01','%Y-%m-%d') from dual;
 #### %Y 代表年份，%m(%c )代表月份，%d 代表天数
 select  str_to_date('2019年-01-01','%Y年-%m-%d') from dual;
+
+#流程控制
+## if 语句
+### if(条件，表达式1，表达式2)
+select if(1>2,'a','b') from dual;
+## case 语句
+select case 1 when 1 then 'a' when 2 then 'b' else 'c' end from dual;
+select last_name,salary,
+case
+when salary>20000 then 'a'
+when salary>15000 then 'b'
+when salary>10000 then 'c'
+else 'd'
+end as 等级,department_id
+from employees;
+## 分组函数
+### sum() 求和,avg() 求平均值,max() 求最大值,min() 求最小值,count() 求个数
+###、sum、avg一般用于处理数值型, max、min、count可以处理任何类型
+### 3、可以和distinct搭配实现去重的运算
+### 以上函数都忽略null值
+select sum(salary) from employees;
+### 一般使用count(*)用作统计行数
+select  count(*) ,sum(department_id)
+from employees
+where 1=0;
+### 5、 group by(进行分组)和分组函数一同查询的字段要求是group by后的字段
+select department_id,count(*)
+from employees
+group by department_id;
+### order by 不能和分组函数一同使用,在ORDER BY子句中不能使用别名
+##分组函数问题
+    ###1.参数支持哪些类型  字符串SUM(last_name)，日期SUM(hiredate) 数字COUNT(commission_pct)
+    ###2.是否忽略NULL值  忽略NULL值
+# 连接
+
+## 内连接：把两个表中满足条件的记录组合在一起
+
+## 外连接：把两个表中满足条件的记录组合在一起，同时把没有匹配的记录也包含进来
+###查询所有员工信息
+select last_name,department_name
+from employees ,departments
+where employees.department_id=departments.department_id
