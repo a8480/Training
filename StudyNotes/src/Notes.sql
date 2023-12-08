@@ -129,3 +129,42 @@ select last_name from employees;
 select last_name from employees
 union all
 select last_name from employees;
+
+##子查询
+###子查询的结果是一个临时表，只在当前查询中有效
+###子查询的结果可以是一行，也可以是多行
+###子查询可以放在from后面，也可以放在where后面
+###子查询可以放在select后面，但是必须和单行的select搭配使用
+###子查询可以放在having后面，但是必须和单行的select搭配使用
+###子查询可以放在insert into后面，但是必须和单行的select搭配使用
+###子查询可以放在update后面，但是必须和单行的select搭配使用
+###子查询可以放在delete后面，但是必须和单行的select搭配使用
+###子查询可以放在exists后面，但是必须和单行的select搭配使用
+###子查询可以放在in后面，但是必须和单行的select搭配使用
+###子查询可以放在any后面，但是必须和单行的select搭配使用
+###子查询可以放在all后面，但是必须和单行的select搭配使用
+###子查询可以放在some后面，但是必须和单行的select搭配使用,相当于any
+#DML语句
+##insert into 表名(列名1，列名2，...) values(值1，值2，...)
+insert into employees(last_name,email,job_id,hiredate,salary)
+value ('孙悟空','dsdsd','IT_PROG',now(),3000);
+insert into  departments set department_id=330, department_name='人事部',location_id=1700;
+##update 表名 set 列名1=值1，列名2=值2，... where 条件
+update employees set salary=10000 where employee_id=100;
+# delete from 表名 where 条件
+# delete 删除数据后,可以使用rollback回滚
+delete from employees where employee_id=100;
+#truncate table 表名,删除表中的所有数据，但是不能回滚
+truncate table employees;
+#DDL语句
+##数据库的创建和删除
+##create table 表名(列名1 数据类型，列名2 数据类型，...)
+create database  if not exists db1;
+create table if not exists t1
+(
+    name varchar(20),
+    age  int
+);
+##drop table 表名:删除表
+drop table t1;
+drop database  if exists db1;

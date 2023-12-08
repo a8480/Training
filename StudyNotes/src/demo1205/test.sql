@@ -24,6 +24,7 @@ where salary not between 5000 and 12000;
     where commission_pct is not null;
 
 # 7. 选择员工姓名的第三个字母是 a 的员工姓名
+
 # 8. 选择姓名中有字母 a 和 e 的员工姓名
 # 9. 显示出表 employees 表中 first_name 以 'e'结尾的员工信息
 # 10. 显示出表 employees 部门编号在 80-100 之间 的姓名、职位
