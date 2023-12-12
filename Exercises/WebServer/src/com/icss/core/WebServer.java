@@ -67,7 +67,7 @@ public class WebServer {
                     byte[] bytes=new byte[(int)file.length()];
                     FileInputStream fileInputStream=new FileInputStream(file);
                     fileInputStream.read(bytes);
-                    //写数据到客户端
+                    //写到客户端
                     outputStream.write(bytes);
                 }else {
                     System.out.println("文件不存在");

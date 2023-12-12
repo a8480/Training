@@ -168,3 +168,19 @@ create table if not exists t1
 ##drop table 表名:删除表
 drop table t1;
 drop database  if exists db1;
+
+# 主键自动增长
+create table t2
+(
+    id int primary key auto_increment,
+    name varchar(20)
+);
+# 创建视图
+create  view  view_emp
+as
+select  employee_id,last_name
+from employees;
+# 使用视图
+# 对视图的操作就是对原表的操作，但是不建议对视图进行增删改
+# 查询视图的前10条数据
+select * from view_emp limit 10;

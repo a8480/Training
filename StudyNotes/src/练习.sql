@@ -184,7 +184,12 @@ select  job_id,job_title,department_name,min(salary)
 # kochhar 101 king 100
 # 测 试
 # 1. 查询和 Zlotkey 相同部门的员工姓名和工资
+select last_name,salary,department_id
+from employees
+where department_id in (select  department_id from employees where last_name='Zlotkey')
+and last_name!='Zlotkey';
 # 2. 查询工资比公司平均工资高的员工的员工号，姓名和工资。
+select last_name,employee_id,salary,avg(salary)
 # 3. 查询各部门中工资比本部门平均工资高的员工的员工号, 姓名和工资
 # 4. 查询和姓名中包含字母 u 的员工在相同部门的员工的员工号和姓名
 # 5. 查询在部门的 location_id 为 1700 的部门工作的员工的员工号
