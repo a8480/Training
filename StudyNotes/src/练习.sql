@@ -195,3 +195,7 @@ select last_name,employee_id,salary,avg(salary)
 # 5. 查询在部门的 location_id 为 1700 的部门工作的员工的员工号
 # 6. 查询管理者是 King 的员工姓名和工资
 # 7. 查询工资最高的员工的姓名，要求 first_name 和 last_name 显示为一列，列名为 姓.名
+## 显示系统时间
+select now() from dual;
+# 查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序
+select  str_to
